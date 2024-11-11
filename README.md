@@ -24,9 +24,9 @@ The extension works by cross-referencing the URL of websites that users visit wi
 
 ## Authors
 - Vernika Jain
-- Sruthi Malisetty
+- [Sruthi Malisetty](https://github.com/sruthi120304)
 - Jhanvi Mittal
-- Saanvi Sampada
+- [Saanvi Sampada](https://github.com/ksampada23) 
 - Aniruddh Srivastava
 - Adarsh Veerapaneni
 
