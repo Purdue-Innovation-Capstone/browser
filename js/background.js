@@ -123,12 +123,12 @@ async function fetchDataList() {
 function updatePageAction(status, tabId) {
   const icons = {
     unsafe: {
-      19: "../res/icons/unsafe_19.png",
-      38: "../res/icons/unsafe_38.png",
+      19: "../icons/exclamation_icon_128x128.png",
+      38: "../icons/exclamation_icon_128x128.png",
     },
     safe: {
-      19: "../res/icons/safe_19.png",
-      38: "../res/icons/safe_38.png",
+      19: "../icons/grey_circle_128x128.png",
+      38: "../icons/grey_circle_128x128.png",
     },
   };
 

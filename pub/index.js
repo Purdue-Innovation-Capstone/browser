@@ -90,9 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function updateUI(status, message) {
       const icons = {
-        unsafe: "../res/icons/unsafe.png",
-        safe: "../res/icons/safe.png",
-        error: "../res/icons/error.png",
+        unsafe: "../icons/exclamation_icon_128x128.png",
+        safe: "../icons/grey_circle_128x128.png",
+        error: "../icons/error.png",
       };
   
       // Update the icon and message
