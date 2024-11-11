@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const icons = {
         unsafe: "../icons/exclamation_icon_128x128.png",
         safe: "../icons/grey_circle_128x128.png",
-        error: "../icons/error.png",
+        error: "../icons/exclamation_icon_128x128.png",
       };
   
       // Update the icon and message
