@@ -23,7 +23,7 @@ The extension works by cross-referencing the URL of websites that users visit wi
 - **Gray Circle**: Indicates caution for sites without specific data on misinformation but encourages users to be careful.
 
 ## Authors
-- Vernika Jain
+- [Vernika Jain](https://github.com/vernikaj)
 - [Sruthi Malisetty](https://github.com/sruthi120304)
 - Jhanvi Mittal
 - [Saanvi Sampada](https://github.com/ksampada23) 
