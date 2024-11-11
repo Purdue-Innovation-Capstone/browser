@@ -2,21 +2,17 @@ url,label,source,last_update,accuracy,transparency,type
 notiziepericolose.blogspot.it,false satire,bufale,2018,1,1,unreliable
 ilmattoquotidiano.it,false satire,bufale,2018,1,1,unreliable
 ilmessaggio.it,false satire,bufale,2018,1,1,unreliable
-ilfattoquotidaino.it,false satire,bufale,2018,1,1,unreliable
 ilquotidaino.wordpress.com,false satire,bufale,2018,1,1,unreliable
 liberogiornale.com,false satire,bufale,2018,1,1,unreliable
 notiziariosegreto.wordpress.com,false satire,bufale,2018,1,1,unreliable
 secretnews.fr,false satire,bufale,2018,1,1,unreliable
 superbamente.com,false satire,bufale,2018,1,1,unreliable
-worldnewsdailyreport.com,false satire,bufale,2018,1,1,unreliable
 fonteverificata.it,false satire,bufale,2018,1,1,unreliable
-dionidream.com,medical and scientific disinformation,bufale,2018,1,1,unreliable
 lastella.altervista.org,medical and scientific disinformation,bufale,2018,1,1,unreliable
-segnidalcielo.it,medical and scientific disinformation,bufale,2018,1,1,unreliable
 pianetablunews.wordpress.com,medical and scientific disinformation,bufale,2018,1,1,unreliable
 saltoquantico.org,medical and scientific disinformation,bufale,2018,1,1,unreliable
 autismovaccini.org,medical and scientific disinformation,bufale,2018,1,1,unreliable
-jedanews.it/blog,medical and scientific disinformation,bufale,2018,1,1,unreliable
+jedanews.it,medical and scientific disinformation,bufale,2018,1,1,unreliable
 naturalnews.com,medical and scientific disinformation,bufale,2018,1,1,unreliable
 notiziespericolate.com,medical and scientific disinformation,bufale,2018,1,1,unreliable
 viaggialowcost.altervista.org,medical and scientific disinformation,bufale,2018,1,1,unreliable
@@ -26,21 +22,17 @@ devinformarti.blogspot.it/?m=1,political disinformation,bufale,2018,1,1,unreliab
 imolaoggi.it,political disinformation,bufale,2018,1,1,unreliable
 scenarieconomici.it,political disinformation,bufale,2018,1,1,unreliable
 voxnews.info,political disinformation,bufale,2018,1,1,unreliable
-informarexresistere.fr,political disinformation,bufale,2018,1,1,unreliable
 breaknotizie.com,political disinformation,bufale,2018,1,1,unreliable
 direttanews24.com,political disinformation,bufale,2018,1,1,unreliable
 fascinazione.info,political disinformation,bufale,2018,1,1,unreliable
 tg5stelle.it,political disinformation,bufale,2018,1,1,unreliable
-blogopenyoureyes.altervista.org,political disinformation,bufale,2018,1,1,unreliable
 ilbazarinformazione.blogspot.it,political disinformation,bufale,2018,1,1,unreliable
 informare.over-blog.it,political disinformation,bufale,2018,1,1,unreliable
-notizieinmovimentonews.blogspot.it,political disinformation,bufale,2018,1,1,unreliable
 tg24-ore.com,political disinformation,bufale,2018,1,1,unreliable
 informaresenzacensure.blogspot.com,political disinformation,bufale,2018,1,1,unreliable
 byoblu.com,political disinformation,bufale,2018,1,1,unreliable
 mag24.es,political disinformation,bufale,2018,1,1,unreliable
 iocritico.com,scandal hoax,bufale,2018,1,1,unreliable
-sostenitori.info,scandal hoax,bufale,2018,1,1,unreliable
 irresponsabile.com,scandal hoax,bufale,2018,1,1,unreliable
 aidaa-animaliambiente.blogspot.it,scandal hoax,bufale,2018,1,1,unreliable
 thuglifevideos.com,scandal hoax,bufale,2018,1,1,unreliable
@@ -4682,7 +4674,6 @@ skepticalscience.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 skeptoid.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 skyandtelescope.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 smithsonianmag.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
-societyforscience.org,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 space.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 techxplore.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 aip.org,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
@@ -4702,13 +4693,7 @@ webmd.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 who.int,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 public.wmo.int,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
 zmescience.com,pro science,media_bias_fact_check,2021-05-17,5,3,reliable
-cnn-business-news.ga,imposter site,politifact,2017-11-09,1,1,unreliable
-kbc14.com,imposter site,politifact,2017-11-09,1,1,unreliable
-kcst7.com,imposter site,politifact,2017-11-09,1,1,unreliable
 kf13.com,imposter site,politifact,2017-11-09,1,1,unreliable
-krb7.com,imposter site,politifact,2017-11-09,1,1,unreliable
-kty24news.com,imposter site,politifact,2017-11-09,1,1,unreliable
-nydailynews-tv.com,imposter site,politifact,2017-11-09,1,1,unreliable
 observeronline.news,imposter site,politifact,2017-11-09,1,1,unreliable
 themiamigazette.com,imposter site,politifact,2017-11-09,1,1,unreliable
 werk35.com,imposter site,politifact,2017-11-09,1,1,unreliable
