@@ -27,7 +27,7 @@ The extension works by cross-referencing the URL of websites that users visit wi
 - [Sruthi Malisetty](https://github.com/sruthi120304)
 - Jhanvi Mittal
 - [Saanvi Sampada](https://github.com/ksampada23) 
-- Aniruddh Srivastava
+- [Aniruddh Srivastava](https://github.com/Noir01)
 - Adarsh Veerapaneni
 
 ## Acknowledgements
