@@ -5,15 +5,11 @@
   "author": "Misinformation Lab",
   "version": "1.0",
   "icons": {
-    "16": "res/icons/extension_icon_16.png",
-    "32": "res/icons/extension_icon_32.png",
-    "48": "res/icons/extension_icon_48.png",
-    "128": "res/icons/extension_icon_128.png"
+    "128": "icons/grey_circle_128x128.png"
   },
   "action": {
     "default_icon": {
-      "16": "res/icons/extension_icon_16.png",
-      "32": "res/icons/extension_icon_32.png"
+      "128": "icons/grey_circle_128x128.png"
     },
     "default_popup": "pub/index.html"
   },
