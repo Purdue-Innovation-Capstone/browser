@@ -165,6 +165,7 @@ function checkSiteAndUpdatePageAction(tabId, url) {
 
 // Event Listeners
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log("Received message:", message);
   if (message.action === "checkSiteStatus") {
     const normalizedUrl = normalizeUrl(message.url.trim());
     const rootUrl = extractRootUrl(normalizedUrl);
@@ -187,7 +188,7 @@ function openWarningPage(tabId, unsafeUrl) {
   }
 
   const warningPageUrl = chrome.runtime.getURL(
-    `../pub/warning-page.html?url=${encodeURIComponent(unsafeUrl)}`
+    `../pub/warning.html?url=${encodeURIComponent(unsafeUrl)}`
   );
   chrome.tabs.update(tabId, { url: warningPageUrl });
 }

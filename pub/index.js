@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Get the active tab's URL
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      console.log("Attempting to retrieve current tab");
       if (chrome.runtime.lastError || !tabs[0] || !tabs[0].url) {
         handleError("No active tab found or URL is unavailable.");
         return;
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       chrome.runtime.sendMessage(
         { action: "checkSiteStatus", url: currentUrl },
         (response) => {
+          console.log("Received response from background script:", response);
           if (chrome.runtime.lastError || !response || !response.status) {
             handleError(
               "Failed to retrieve site status from the background script."
