@@ -16,7 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Helper function to extract the root domain from a URL
     function extractRootDomain(url) {
       let urlObj = new URL(url);
-      return `${urlObj.protocol}//${urlObj.hostname}`;
+      // Remove 'www.' if it exists
+      let hostname = urlObj.hostname.startsWith('www.') 
+        ? urlObj.hostname.slice(4) 
+        : urlObj.hostname;
+      console.log(`${urlObj.protocol}//${hostname}`);
+      return `${urlObj.protocol}//${hostname}`;
     }
   
     // Function to apply theme based on system preference
