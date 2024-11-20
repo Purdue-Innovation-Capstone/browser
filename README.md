@@ -3,6 +3,7 @@
 This project aims to help stop the growing spread of misinformation and disinformation in the online community. It provides a browser extension that alerts users when they visit websites flagged for harmful or misleading content, encouraging caution before engaging.
 
 ## Purpose
+
 This browser extension is designed to increase awareness about misinformation by warning users when they encounter flagged websites.
 
 ## Functionality / Description
@@ -13,6 +14,7 @@ The extension works by cross-referencing the URL of websites that users visit wi
 - **Icon 2**: A **gray circle** signals caution for sites with no definitive information in the CSV, reminding users to be vigilant.
 
 ### How It Works
+
 1. A script reads entries from a `.csv` file listing websites identified for misinformation.
 2. Whenever a user visits a new site, the extension cross-checks the current URL with entries in the `.csv` file.
 3. If a match is found, the extension displays a warning icon.
@@ -22,14 +24,23 @@ The extension works by cross-referencing the URL of websites that users visit wi
 - **Red Circle with Exclamation**: Appears when the visited website has been flagged for misinformation or disinformation.
 - **Gray Circle**: Indicates caution for sites without specific data on misinformation but encourages users to be careful.
 
+## Installation
+
+1. Clone the repository to your local machine.
+2. Open the browser and navigate to `chrome://extensions/`.
+3. Enable **Developer Mode**.
+4. Click on **Load Unpacked** and select the cloned repository.
+5. The extension will be added to your browser.
+
 ## Authors
+
 - [Vernika Jain](https://github.com/vernikaj)
 - [Sruthi Malisetty](https://github.com/sruthi120304)
 - [Jhanvi Mittal](https://github.com/jmittal392)
-- [Saanvi Sampada](https://github.com/ksampada23) 
+- [Saanvi Sampada](https://github.com/ksampada23)
 - [Aniruddh Srivastava](https://github.com/Noir01)
 - Adarsh Veerapaneni
 
 ## Acknowledgements
+
 - [GitHub with Cleaned Sources and Ratings](https://github.com/JanaLasser/misinformation_domains/tree/main)
- 
