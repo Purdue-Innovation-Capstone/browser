@@ -26,11 +26,116 @@ The extension works by cross-referencing the URL of websites that users visit wi
 
 ## Installation
 
-1. Clone the repository to your local machine.
-2. Open the browser and navigate to `chrome://extensions/`.
-3. Enable **Developer Mode**.
-4. Click on **Load Unpacked** and select the cloned repository.
-5. The extension will be added to your browser.
+Follow these steps to install the **Misinformation Awareness Browser Extension** on your browser:
+
+### Step 1: Download the Extension Files
+
+You can get the extension files either by downloading them directly or by cloning the repository. Choose one of the following options:
+
+#### Option A: Download as ZIP (Recommended for Beginners)
+
+1. **Visit the GitHub Repository**: Navigate to the extension's GitHub page.
+2. **Download the ZIP File**:
+   - Click on the green **Code** button.
+   - Select **Download ZIP** from the dropdown menu.
+3. **Extract the Files**:
+   - Locate the downloaded ZIP file on your computer (usually in the `Downloads` folder).
+   - Right-click the ZIP file and select **Extract All** or **Extract Here**, depending on your operating system.
+   - Choose a destination folder where the extracted files will be saved.
+
+#### Option B: Clone the Repository Using Git
+
+If you're comfortable using Git:
+
+1. **Ensure Git is Installed**:
+   - If you don't have Git installed, download it from the [official website](https://git-scm.com/downloads) and follow the installation instructions.
+2. **Open Command Prompt or Terminal**:
+   - **Windows**: Press `Win + R`, type `cmd`, and press **Enter**.
+   - **macOS/Linux**: Open **Terminal** from your applications.
+3. **Navigate to Your Desired Directory**:
+   - Use the `cd` command to change directories. For example:
+
+     ```bash
+     cd /path/to/your/directory
+     ```
+
+4. **Clone the Repository**:
+   - Run the following command:
+
+     ```bash
+     git clone https://github.com/YourUsername/YourRepository.git
+     ```
+
+     > Replace `https://github.com/YourUsername/YourRepository.git` with the actual URL of the repository.
+
+### Step 2: Open the Extensions Page in Your Browser
+
+#### For Google Chrome or Microsoft Edge
+
+1. **Open the Browser**: Launch Google Chrome or Microsoft Edge.
+2. **Navigate to Extensions**:
+   - In the address bar, type `chrome://extensions/` and press **Enter**.
+
+#### For Mozilla Firefox
+
+1. **Open the Browser**: Launch Mozilla Firefox.
+2. **Navigate to Debug Add-ons**:
+   - In the address bar, type `about:debugging#/runtime/this-firefox` and press **Enter**.
+
+### Step 3: Enable Developer Mode
+
+#### For Google Chrome or Microsoft Edge
+
+1. **Enable Developer Mode**:
+   - Find the **Developer mode** toggle switch, usually located in the top-right corner of the Extensions page.
+   - Click the toggle to enable it.
+
+#### For Mozilla Firefox
+
+1. **Enable Add-on Debugging**:
+   - Click on **Enable add-on debugging** if it's not already enabled.
+
+### Step 4: Load the Unpacked Extension
+
+#### For Google Chrome or Microsoft Edge
+
+1. **Click on Load Unpacked**:
+   - A new button labeled **Load unpacked** should appear after enabling Developer mode.
+   - Click on it.
+2. **Select the Extension Folder**:
+   - In the file dialog, navigate to the folder where you extracted or cloned the extension files.
+   - Click **Select Folder**.
+
+#### For Mozilla Firefox
+
+1. **Click on Load Temporary Add-on**:
+   - Click the **Load Temporary Add-on** button.
+2. **Select the Manifest File**:
+   - Navigate to the extension folder.
+   - Select the `manifest.json` file and click **Open**.
+
+### Step 5: Confirm Installation
+
+1. **Verify the Extension is Added**:
+   - The extension should now appear in your list of installed extensions/add-ons.
+2. **Check the Extension Icon**:
+   - Look for the extension's icon in your browser's toolbar.
+
+### Step 6: Start Using the Extension
+
+1. **No Additional Setup Required**:
+   - The extension is now active and will automatically monitor websites you visit.
+2. **Stay Alert for Notifications**:
+   - If you visit a flagged site, the extension will display the appropriate icon to alert you.
+
+### Troubleshooting
+
+- **Extension Not Appearing?**
+  - Ensure you've selected the correct folder that contains the `manifest.json` file.
+- **Icons Not Displaying?**
+  - Refresh the browser or restart it to ensure the extension loads properly.
+- **Issues with Cloning?**
+  - Double-check the repository URL and your internet connection.
 
 ## Authors
 
