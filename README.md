@@ -63,10 +63,8 @@ If you're comfortable using Git:
    - Run the following command:
 
      ```bash
-     git clone https://github.com/YourUsername/YourRepository.git
+     git clone https://github.com/Purdue-Innovation-Capstone/browser.git
      ```
-
-     > Replace `https://github.com/YourUsername/YourRepository.git` with the actual URL of the repository.
 
 ### Step 2: Open the Extensions Page in Your Browser
 
