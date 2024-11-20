@@ -1,5 +1,5 @@
 // URLs and Constants
-const dataListURL = "https://raw.githubusercontent.com/Purdue-Innovation-Capstone/browser/refs/heads/main/domain_list_clean.csv";
+const dataListURL = "https://raw.githubusercontent.com/Purdue-Innovation-Capstone/browser/refs/heads/main/data/domain_list_clean.csv";
 const DEFAULT_CHECK_INTERVAL = 60 * 60 * 1000; // 1 hour in milliseconds
 
 // State Variables
@@ -48,46 +48,11 @@ function extractUrlsFromCSV(text) {
     if (row.length > urlIndex) {
       const url = row[urlIndex];
       if (url) {
-        urls.push(normalizeUrl(url.trim()));
+        urls.push(url.trim()); // Use the URL as-is from the CSV
       }
     }
   }
   return urls;
-}
-
-function normalizeUrl(url) {
-  if (!url) {
-    console.warn("Received null or undefined URL.");
-    return null;
-  }
-
-  try {
-    if (!/^https?:\/\//i.test(url)) {
-      url = `https://${url}`;
-    }
-    const urlObj = new URL(url);
-    urlObj.search = "";
-    urlObj.hash = "";
-    return urlObj.href.replace(/\/+$/, "");
-  } catch (error) {
-    console.warn(`Invalid URL skipped: ${url}`);
-    return null;
-  }
-}
-
-function extractRootUrl(url) {
-  if (!url) {
-    console.warn("Received null or undefined URL for root extraction.");
-    return null;
-  }
-
-  try {
-    const urlObj = new URL(url);
-    return `${urlObj.protocol}//${urlObj.hostname}`;
-  } catch (error) {
-    console.warn(`Failed to extract root URL from: ${url}`);
-    return null;
-  }
 }
 
 function generateRegexFromList(list) {
@@ -147,13 +112,19 @@ function checkSiteAndUpdatePageAction(tabId, url) {
     return;
   }
 
-  const normalizedUrl = normalizeUrl(url.trim());
-  const rootUrl = extractRootUrl(normalizedUrl);
+  const excludedProtocols = ['chrome://', 'chrome-extension://', 'edge://', 'about:', 'moz-extension://', 'file://', 'data:', 'javascript:', 'blob:'];
 
-  const isUnsafe = dataSitesRegex?.test(rootUrl) || dataSitesRegex?.test(normalizedUrl);
+  // Check if the URL starts with any excluded protocol
+  if (excludedProtocols.some(protocol => url.startsWith(protocol))) {
+    console.log("Skipping check for special URL:", url);
+    updatePageAction("safe", tabId);
+    return;
+  }
+
+  const isUnsafe = dataSitesRegex?.test(url);
 
   const tabApprovedUrls = approvedUrls.get(tabId) || [];
-  const isApproved = tabApprovedUrls.includes(normalizedUrl);
+  const isApproved = tabApprovedUrls.includes(url);
 
   if (isUnsafe && !isApproved) {
     updatePageAction("unsafe", tabId);
@@ -167,11 +138,7 @@ function checkSiteAndUpdatePageAction(tabId, url) {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log("Received message:", message);
   if (message.action === "checkSiteStatus") {
-    const normalizedUrl = normalizeUrl(message.url.trim());
-    const rootUrl = extractRootUrl(normalizedUrl);
-
-    let isUnsafe =
-      dataSitesRegex?.test(rootUrl) || dataSitesRegex?.test(normalizedUrl);
+    const isUnsafe = dataSitesRegex?.test(message.url.trim());
 
     let status = isUnsafe ? "unsafe" : "safe";
 
@@ -182,7 +149,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 function openWarningPage(tabId, unsafeUrl) {
   const tabApprovedUrls = approvedUrls.get(tabId) || [];
-  if (tabApprovedUrls.includes(normalizeUrl(unsafeUrl))) {
+  if (tabApprovedUrls.includes(unsafeUrl)) {
     console.log(`URL ${unsafeUrl} was already approved for tab ${tabId}`);
     return;
   }
@@ -219,15 +186,14 @@ chrome.tabs.onRemoved.addListener((tabId) => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "proceedAnyway") {
-      const tabId = sender.tab.id;
-      const normalizedUrl = normalizeUrl(message.url.trim());
-      let tabApprovedUrls = approvedUrls.get(tabId) || [];
-      tabApprovedUrls.push(normalizedUrl);
-      approvedUrls.set(tabId, tabApprovedUrls);
-      sendResponse({ success: true });
-    }
-  });  
+  if (message.action === "proceedAnyway") {
+    const tabId = sender.tab.id;
+    const tabApprovedUrls = approvedUrls.get(tabId) || [];
+    tabApprovedUrls.push(message.url.trim());
+    approvedUrls.set(tabId, tabApprovedUrls);
+    sendResponse({ success: true });
+  }
+});
 
 // Initialize extension
 function initializeExtension() {

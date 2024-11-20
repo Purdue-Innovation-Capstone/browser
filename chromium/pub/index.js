@@ -16,12 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Helper function to extract the root domain from a URL
     function extractRootDomain(url) {
       let urlObj = new URL(url);
-      // Remove 'www.' if it exists
-      let hostname = urlObj.hostname.startsWith('www.') 
-        ? urlObj.hostname.slice(4) 
-        : urlObj.hostname;
-      console.log(`${urlObj.protocol}//${hostname}`);
-      return `${urlObj.protocol}//${hostname}`;
+      return `${urlObj.protocol}//${urlObj.hostname}`;
     }
   
     // Function to apply theme based on system preference
@@ -48,6 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const rootDomain = extractRootDomain(currentUrl);
       console.log(`Active tab URL: ${currentUrl}, Root domain: ${rootDomain}`);
   
+      /*const excludedProtocols = ['chrome://', 'chrome-extension://', 'edge://', 'about:', 'moz-extension://', 'file://', 'data:', 'javascript:', 'blob:'];
+
+      // Check if the URL starts with any excluded protocol
+      if (excludedProtocols.some(protocol => currentUrl.startsWith(protocol))) {
+        console.log("Skipping check for special URL:", currentUrl);
+        updateUI(
+          "safe",
+          `${rootDomain} is a special page. No status available.`
+        );
+        return;
+      } */
+
       // Send a message to the background script to check the site's status
       chrome.runtime.sendMessage(
         { action: "checkSiteStatus", url: currentUrl },
@@ -112,4 +119,4 @@ document.addEventListener("DOMContentLoaded", () => {
   
       console.log(`UI updated: ${message}`);
     }
-  });  
+});
