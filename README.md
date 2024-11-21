@@ -68,34 +68,17 @@ If you're comfortable using Git:
 
 ### Step 2: Open the Extensions Page in Your Browser
 
-#### For Google Chrome or Microsoft Edge
-
 1. **Open the Browser**: Launch Google Chrome or Microsoft Edge.
 2. **Navigate to Extensions**:
    - In the address bar, type `chrome://extensions/` and press **Enter**.
 
-#### For Mozilla Firefox
-
-1. **Open the Browser**: Launch Mozilla Firefox.
-2. **Navigate to Debug Add-ons**:
-   - In the address bar, type `about:debugging#/runtime/this-firefox` and press **Enter**.
-
 ### Step 3: Enable Developer Mode
-
-#### For Google Chrome or Microsoft Edge
 
 1. **Enable Developer Mode**:
    - Find the **Developer mode** toggle switch, usually located in the top-right corner of the Extensions page.
    - Click the toggle to enable it.
 
-#### For Mozilla Firefox
-
-1. **Enable Add-on Debugging**:
-   - Click on **Enable add-on debugging** if it's not already enabled.
-
 ### Step 4: Load the Unpacked Extension
-
-#### For Google Chrome or Microsoft Edge
 
 1. **Click on Load Unpacked**:
    - A new button labeled **Load unpacked** should appear after enabling Developer mode.
@@ -103,14 +86,6 @@ If you're comfortable using Git:
 2. **Select the Extension Folder**:
    - In the file dialog, navigate to the folder where you extracted or cloned the extension files.
    - Click **Select Folder**.
-
-#### For Mozilla Firefox
-
-1. **Click on Load Temporary Add-on**:
-   - Click the **Load Temporary Add-on** button.
-2. **Select the Manifest File**:
-   - Navigate to the extension folder.
-   - Select the `manifest.json` file and click **Open**.
 
 ### Step 5: Confirm Installation
 
