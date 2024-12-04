@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	document.getElementById("goBack").addEventListener("click", () => {
 		console.log("User clicked Go Back.");
-		window.history.go(-1);
+		window.history.go(-2);
 	});
 
 	document.getElementById("proceed").addEventListener("click", () => {
