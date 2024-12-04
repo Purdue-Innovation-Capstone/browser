@@ -4,6 +4,7 @@ const DEFAULT_CHECK_INTERVAL = 60 * 60 * 1000; // 1 hour in milliseconds
 
 // State Variables
 let dataSites = [];
+let dataSitesMap = new Map(); // Map to store URL and label pairs
 let dataSitesRegex = null;
 const approvedUrls = new Map(); // Map to store approved URLs per tab
 
@@ -33,26 +34,45 @@ function parseCSVLine(line) {
 	return result;
 }
 
-function extractUrlsFromCSV(text) {
+function normalizeUrl(url) {
+	try {
+		// Add protocol if missing
+		if (!/^https?:\/\//i.test(url)) {
+			url = `https://${url}`;
+		}
+		const parsedUrl = new URL(url);
+		return parsedUrl.hostname.replace(/^www\./, '') + parsedUrl.pathname;
+	} catch (error) {
+		console.error("Invalid URL during normalization:", url, error);
+		return url; // Fallback to the original URL
+	}
+}
+
+function extractUrlsAndLabelsFromCSV(text) {
 	const lines = text.trim().split('\n');
 	const headers = lines[0].split(',');
 	const urlIndex = headers.indexOf('url');
-	if (urlIndex === -1) {
-		console.error('URL column not found in CSV');
-		return [];
+	const labelIndex = headers.indexOf('label');
+
+	if (urlIndex === -1 || labelIndex === -1) {
+		console.error('Required columns not found in CSV');
+		return new Map();
 	}
-	const urls = [];
+
+	const map = new Map();
 	for (let i = 1; i < lines.length; i++) {
 		const line = lines[i];
 		const row = parseCSVLine(line);
-		if (row.length > urlIndex) {
-			const url = row[urlIndex];
+		if (row.length > urlIndex && row.length > labelIndex) {
+			let url = row[urlIndex]?.trim();
+			const label = row[labelIndex]?.trim();
+			url = normalizeUrl(url); // Normalize URL here
 			if (url) {
-				urls.push(url.trim()); // Use the URL as-is from the CSV
+				map.set(url, label || "Unknown");
 			}
 		}
 	}
-	return urls;
+	return map;
 }
 
 function generateRegexFromList(list) {
@@ -69,8 +89,8 @@ async function fetchDataList() {
 		const response = await fetch(dataListURL);
 		if (response.ok) {
 			const csvText = await response.text();
-			const urls = extractUrlsFromCSV(csvText);
-			dataSites = [...new Set(urls)];
+			dataSitesMap = extractUrlsAndLabelsFromCSV(csvText);
+			dataSites = Array.from(dataSitesMap.keys());
 			dataSitesRegex = generateRegexFromList(dataSites);
 			console.log(`Fetched ${dataSites.length} URLs from data list.`);
 			chrome.storage.local.set({
@@ -121,14 +141,16 @@ function checkSiteAndUpdatePageAction(tabId, url) {
 		return;
 	}
 
-	const isUnsafe = dataSitesRegex?.test(url);
+	const normalizedUrl = normalizeUrl(url);
+	const isUnsafe = dataSitesMap.has(normalizedUrl);
+	const label = dataSitesMap.get(normalizedUrl) || "Unknown";
 
 	const tabApprovedUrls = approvedUrls.get(tabId) || [];
 	const isApproved = tabApprovedUrls.includes(url);
 
 	if (isUnsafe && !isApproved) {
 		updatePageAction("unsafe", tabId);
-		openWarningPage(tabId, url);
+		openWarningPage(tabId, url, label);
 	} else {
 		updatePageAction("safe", tabId);
 	}
@@ -137,19 +159,22 @@ function checkSiteAndUpdatePageAction(tabId, url) {
 // Event Listeners
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	console.log("Received message:", message);
-	if (message.action === "checkSiteStatus") {
-		const isUnsafe = dataSitesRegex?.test(message.url.trim());
+	if (message.action === "checkSiteStatus" || message.action === "getLabel") {
+		const normalizedUrl = normalizeUrl(message.url.trim());
+		console.log("Normalized URL for checking:", normalizedUrl);
 
-		let status = isUnsafe ? "unsafe" : "safe";
+		const label = dataSitesMap.get(normalizedUrl) || "Unknown";
 
 		sendResponse({
-			status: status
+			status: message.action === "checkSiteStatus" ? (label !== "Unknown" ? "unsafe" : "safe") : null,
+			label: label,
 		});
+
 		return true; // Indicates asynchronous response handling
 	}
 });
 
-function openWarningPage(tabId, unsafeUrl) {
+function openWarningPage(tabId, unsafeUrl, label) {
 	const tabApprovedUrls = approvedUrls.get(tabId) || [];
 	if (tabApprovedUrls.includes(unsafeUrl)) {
 		console.log(`URL ${unsafeUrl} was already approved for tab ${tabId}`);
@@ -157,7 +182,7 @@ function openWarningPage(tabId, unsafeUrl) {
 	}
 
 	const warningPageUrl = chrome.runtime.getURL(
-		`../pub/warning.html?url=${encodeURIComponent(unsafeUrl)}`
+		`../pub/warning.html?url=${encodeURIComponent(unsafeUrl)}&label=${encodeURIComponent(label)}`
 	);
 	chrome.tabs.update(tabId, {
 		url: warningPageUrl
@@ -166,7 +191,7 @@ function openWarningPage(tabId, unsafeUrl) {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 	if (changeInfo.status === "complete" && tab.url) {
-		checkSiteAndUpdatePageAction(tabId, tab.url);
+		checkSiteAndUpdatePageAction(tab.id, tab.url);
 	}
 });
 
