@@ -104,6 +104,7 @@ If you're comfortable using Git:
 2. **Stay Alert for Notifications**:
    - If you visit a flagged site, the extension will display the appropriate icon to alert you.
 
+For more help, please go to the website and watch the tutorial on how to downlaod and use the browser extension: https://purdueinformationlab.netlify.app/
 ### Troubleshooting
 
 - **Extension Not Appearing?**
@@ -123,5 +124,4 @@ If you're comfortable using Git:
 - Adarsh Veerapaneni
 
 ## Acknowledgements
-
 - [GitHub with Cleaned Sources and Ratings](https://github.com/JanaLasser/misinformation_domains/tree/main)
