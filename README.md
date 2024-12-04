@@ -85,6 +85,7 @@ If you're comfortable using Git:
    - Click on it.
 2. **Select the Extension Folder**:
    - In the file dialog, navigate to the folder where you extracted or cloned the extension files.
+   - Go inside `browser` and click on `chromium`.
    - Click **Select Folder**.
 
 ### Step 5: Confirm Installation
