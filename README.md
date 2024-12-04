@@ -19,7 +19,7 @@ The extension works by cross-referencing the URL of websites that users visit wi
 2. Whenever a user visits a new site, the extension cross-checks the current URL with entries in the `.csv` file.
 3. If a match is found, the extension displays a warning icon.
 4. When the popup appears, the label for the website will also be provided
-   NOTE: Not all websites are as unsafe. Some popular and usually trust worthy websites will still be flagged due to being on the list. Look at the label on the popup to know what the website is flagged for
+5. NOTE: Not all websites are as unsafe. Some popular and usually trust worthy websites will still be flagged due to being on the list. Look at the label on the popup to know what the website is flagged for
 
 ## Icons
 
